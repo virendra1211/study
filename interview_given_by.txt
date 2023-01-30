@@ -1,0 +1,23 @@
+Altimetix
+1. maven life cycle
+2. rebase and merge difference 
+3. virtulization and container difference
+4. type GC 
+5. What is a “stop the world” event?
+6. how you can verify logging, ELK stack  and other way around we can use like kibannna
+7. 
+
+
+Need to improve
+ - Microservices side  individual component (based on the altimetix feedback)
+ - cloud AWS
+ - docker , containerization check
+ 
+####################################################################
+
+####################################################################
+####################################################################
+####################################################################
+####################################################################
+####################################################################
+####################################################################

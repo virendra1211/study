@@ -1,0 +1,280 @@
+﻿Microservice basic and then interview questions?xzccx
+
+1. If you would like to create any microservice then what is the step?
+
+2. If multiple microservices call then what is your design?
+
+3. if you want to create any microservice then whould you should do first?
+
+4. what is end point for new microservices?
+
+5. Where you have deployed microservice in AWS?
+
+6. which jar/war has been created. any ear?
+
+7. Service Discovery:
+service discovery aims to reduce the configuration efforts required by users and administrators.
+Service discovery is a way for application and microservices to locate each other in a network.
+Eureka Server – This microservice application will provide service discovery and registration of above microservices.
+
+===================================
+Alghanium IT company -- looking for technical lead with cloud, angular experience guy
+- How load balancing is happening
+  Round robin, sticky session(where should is send the request which pod, lets take an example one pod is used for cache and other service need to 
+  utilize that cache then request should be went to that pod only
+
+- How to call M1 -> m2
+ Three way to deal with this 
+ 1. via calling by RestTemplate
+ 2. Event mechanism, push message in kafka listener or Rabit mq
+ 3. Feign client:	When we work with microservices, there will be a lot of calls to other services. We need not to code like the previous one. Feign is a component that solves this problem. Feign makes it easy to invoke other microservices.
+
+- Different between Architectural and design pattern
+ Architectural is contain with multiple design pattern and associated with multiple s/w like kafka, redis and other.
+ need to check more
+ 
+- your responsibility
+  > Host
+  > Backend
+  > framework
+
+- CI/CD
+
+==============
+ReentrantLock
+				Advantage							DisAdvantage
+Fair Lock - 	Equal chance for all thread		Slower
+Unfair Lock	-	Faster(more throughput)			possible thread starockrvation
+lock and unlock method
+boolean lockAcuqired = lock.tryLock();
+true means you have a lock access, 
+if you could n't aquire the lock then don't want to block. then use this.
+if(lockAquired){} else{do something else);
+one more option
+
+boolean lockAcuiqred = locktryLock(timeout:5,TimeUnit.SECONDS); // TRY LOCK with the time, out , wait for 5 second let me know aquire the lock.
+
+--- doesnt honor faireness when using tryLock();
+---- If want to use fairenSSe then use lock.tryLock(timeout:0 TimeUnit.SECONDS);
+
+how many thread waiting on the thread lock -> get QueueLength
+-------------------------------------------
+Completable Future:-
+
+Perform possible asynchrnous compuatation and trigger dependant computations which could also be asynchronous
+
+Peroform Non blocking object, 
+
+ExecutorService service = Executors.newFixedThreadPool(10);
+
+Future future = service.submit(new Task());
+future.get()// thread is blocked and wait for the result
+problem is more cumbersome when multiple task has to be submitted.
+even though many task which are completed, since we are in the for loop we are not using other .
+
+
+====================================
+discussion was happening between two youtuber technical
+
+​Is each microservice deployed on different server and do we need a Load Balancer to redirect requests to the server
+how to handle transaction in microservice?
+
+API gateway and eureka server?
+API Gateway is a concept, Eureka server is one of the technology
+you can use to implement API.
+
+How to design?
+what is the peak traffic, budget, so many questions.
+if you have tooo bigs, may 10 small team make a difference.
+as a developer or architect, 
+how to design?
+what are the criteria and what are the decision i need to take .
+
+Q. How the database is manage?
+Ans. is a tricky part in microservices scenario.
+idle scenario single database for each service.
+A reading-> service   <- writing . break the contract.
+
+problem with data most database is relational database. how do you separated.  Biggest pain is how do you split data.
+
+gradually moving data, idle have decomposition. two services read
+or write not good.
+
+Q Microservcie: is a state less, how you maintain across microservices. user one, need info company
+Ans. In monolithis context behind this.
+
+carry the information every where, oath(which you can carry logged in information).
+maintain A -> B -> C
+web tier, ecommerce example:/
+1 approach user context passes services(sub sequent), check upfront
+chain of services.
+2 user context may not be passed as pere requirement.
+like shopping card we are not sending user context as it's not require.
+
+CompletableFuture vs future:
+Future: Time increase linearly if order process in the loop
+
+1) Because we use future.get, we have block main , each
+stage in each order.
+2) callable accept value through constructure we have to wait to the return value for previous stage.
+"Need to wait for previous stages to retur value(as future is use) before submission of task to execute service."
+
+Solution
+By pass main while returning values
+some mecahnism for callables to behave like regular functions taking in arguments.
+
+Q when to use service Mesh 
+Ans. when you feel the need of service mesh.
+lot of small team doing there own thing, they are fast great thing.
+but the problem is there are certain things commong among microservices. which was not a problem in monolithic.
+for example login, security
+but now you have 1o microservices you need to do the same thing.
+that's why service mesh come in.
+
+"A service mesh is a platform layer on top of the infrastructure layer that enables managed, observable, and secure communication between individual services."
+that's why service mesh, isolate that out and  have one thing
+that control, how cross cutting concern implement each of those services. 
+feel microservices have too much, same thing that you are doing again and again. take care of the cross cutting concern.
+
+Q Suppose 1 out of n number of microservice is failing or performing slow or not responding. So How you can manage that?
+Ans. you have something like "circuite breaker" // hystrix.
+you need to identify , why services not responding.
+A -> B call, time out happened, then timeout occured in A.
+if microservices not responding it's consuming lot of responses.
+A callling B, B failed for some reason. wait for certain time. time out.
+
+When there are 100 request per second is happenign all of them
+A - B . All those 100 request are waiting for timeout .
+this is going to block. A can not taking anymore, still waiting for the response. thats why added "Circuite breaker".
+
+A -> B, If i know , i am not going to send other request.
+i am going to do mitigation request, error request , default.
+
+Prctive: jesh long , spring boot 
+Q. miroservices vs micro frontend.
+Ans. microservices is the way you can split the application on the server side. In front end into separate team. unlike the frontend, its one page loaded in the browser, how do you split.
+answ is micro frontend.
+different pieces, with technology.
+
+-------------------------------------------
+WIPRO
+Q1 Role of the Rest API?
+Its resource based and work on Http protocol. we can update and add anything without.
+Representational state Transfer(REST) is a web service acrchitectural style where everythhing is a resource accessible via HTTP. resource noun, image,
+document or an object such as widget. REST has four basic resource PUT, GET, POST AND DELETE. All the communication happening via JSON
+java script object notation is the most widely used. json is a simple format for data storage and transport. It use javascription notation to
+represent objects as attribute and value pairs and groups these objects as arrays. example
+Q2 Restful framework, API is an independent concept not depend on any language
+	I.	An API(application programing interface) is a software to intermediary that allows two or more application to talk each other.
+	API type in terms of release policies:
+	private :	within the company
+	Partner :	If service used by your business partner
+	Public	:	It can be used by third party developers
+	example: suppose i would like to see UK, US weather in my application then i dont need to go there instead will call web service.
+	Every Api have documentation based on request and response.	
+	weather report provider, and we are the consumer here.
+	Suppose i have one website and want to display from amazon, flipkart, myntra etc. we are not directly going to that side, every site created API and expose that website, so we can use those API to get the info.
+******** REST FRAMEWORK AND MICROSERVICES FRAMEWORK are
+ 1 Apache cxf
+ 2 Jersey
+ 3 RESTEasy
+ 4 DropWizard
+ 5 spring boot
+ 6 spring MVC etc. 
+ 
+Q3 spring cloud - workd or  -- . centralize property configuration
+Q4 Deployment way
+Q5 Key elements of Restful implementation follows
+Q6 Kafka componentss [producer, consumer, broker, consumer groups, parties, replicas, loads etc]
+
+Interview Questions & Answer :-
+What is microservice architecture?
+_ is a small loosely couple and distributed services.
+decomposing application in various module.
+- module can be independently deployed.
+- team size of developer is very less.
+- various technology can be build to make an application.
+- services devided in various group, it makes developer to
+communicate with each and every services easily.
+- other services can be program developed in any language.
+
+Advantage & disadvantage of microservices
+Advantage
+- use any technology like library, gramework to develop services
+- smaller code base is easy to maintain
+- process failure should not bring whole system down
+- independent deployment
+
+Disadvantage:
+- it's distributed system it's hard to trace the issue.
+- difficult complete end to end testing
+- deployment challenges
+
+what are the tools to manage microservices
+- database purpose we should use MongoDB.
+data is stored in json format, support java, python, php etc.
+- kafka : event driven system.
+whenever do transaction, all transaction process via event queue. avoiding random interaction between services.
+robutst.
+- jenkins:
+continous integration and continous deployment.
+best automation tool
+- Docker
+ applicaiton development enviornment and application deployment is bound to vary in many aspects. this givens rise in deployment issue.
+docker provide static background for the application.
+
+- Kubernetes
+engine orchestrate, Elastic search tool
+
+- Fluent
+multi service archietecture, where all the different system are manage via different programing language, db, run in diff operating system, keeping track of very significant issue.
+Fluent provide, Single logging layer and simplifies this issue.
+
+- Jaeger
+End to end  distributed tracing tools, monitor:-distributed transaction, help in peformance optimization also used in root cause analysis.
+
+What is the use of Docker.
+Container enviornment which can be use to host any application.
+dependency supported are tightly package together.
+Explain 3 Testing in microservices?
+ Test are devide in 3 categories
+ 1. bottom level testing: performan genreal test, unit or performance test.
+2. middle level testing: exploratory tesitng.
+3. Top level testing:
+Acceptance testing. different software feature.
+
+Q How independe microservices communicate with each other.
+It depends on your projects need.
+we are using rest over HTTP.
+Q How to handle fault tolerance in microservices?
+Ans. Hystrix is a library control the interaction. latency and fault tolerance. isolating point of . cascading failure and providing fall back option.
+
+Q How to do distributed Tracing in microservices?
+Ans Spring cloud sleuth using implement a distrubuted trackign system for spring cloud for dapper, zipkin and 
+----------------------------------------------------------
+PWC
+1. how spring canmanage circular dependency
+2. observer design pattern
+3. n+1 problem in hibernate, how to solve?
+4. fetch type , eagger and lazy
+5. SAGA design draw back or disadvantages
+6. spring singleton inject prototype question
+7. why singelton break in multithreading envrionment
+8. resilience principle
+9. how annotation work life cycle or else?
+10. kafka if some one consume and not able to consume due to any issue then, ans. kind of dead cache
+
+--------------------
+API throttling:-g is the process of limiting the number of API requests a user can make in a certain period. An application programming interface (API) functions as a gateway between a user and a software application. For example, when a user clicks the post button on social media, the button click triggers an API call.
+
+--------------------------------- EPAM
+1. qus https://ramj2ee.blogspot.com/2017/07/how-to-get-unique-names-in-upper-case.html
+2. search array and find out 2nd lastest person
+3. ABCBXA - > find out wrong palidrome reason
+4. execute thread in sequence order
+5. string buffer vs string builer
+6. how many design pattern  used by you in the project
+7. 
+=============================================
+Hystrix timeout
+https://www.tutorialspoint.com/spring_boot/spring_boot_hystrix.htm

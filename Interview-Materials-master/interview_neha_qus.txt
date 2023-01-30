@@ -1,0 +1,48 @@
+Neha Baxi - Interview questions
+
+Cdk global
+----------------
+1. write a prog to sort values in a map.
+2. DB
+    salary range                tax slab
+      0-1,00,000                   10%
+      1,00,001-5,00,000        20%
+       5,00,000-10,00,000     30%
+Design table schema for above. And write a query to find a tax slab for given salary.
+3. DB
+   person table(id,name,address)
+ write a query to to find duplicate rows from table.
+ write a query to remove only duplicate rows from table. preserve the one row for every duplicate row of a table.
+
+Citi
+------
+1. concurrenthashmap internal architecture. how it works and give scenario where it is advantagous over normal hashmap.
+2. difference bet callable and runnable
+3. what is reentrant lock
+4. explain producer consumer problem and solution.
+5. sort an array using any sorting algo. write program
+6. if in my class there 3 methods that throws same IOException and if i dont want to specify it for every method then what to do.
+7. in concurrenthashmap can 2 threads that has same key can overwrite its value?
+8. same above question for normal hashmap?
+9. when concurrentmodification is thrown in hashmap?
+10. class B extends A implemets Serializable and class A is not serialized, then when i deserialize object B, will it contain A's member variables also? and how deserialization happens? does it call class constructor during deserialization?
+11. which collection to use in following scenario.
+     age        insurance premium bonus percentage
+     10-20       5%
+      21-30       7%
+      31-50       10%
+      51-100     20%
+12. explain IOC
+13. what is spring batch
+14. in hibernate how to define identity column of a database of table. ( ans is in generator tag) next question is : if i have identity column already defined for the table, still can i specify my own custom generator in hbm file? 
+15. if table already has one row like(id, name,sal)(1, abc,2000), and if i call session.save() method what will happen?
+16. db : 
+     employee                                                  dept
+      id       name     sal     deptid                     deptid     deptname
+       1        abc       10k      111                        111          d1
+       2        xyz         20k     222                        222          d2
+       3        ghj         40k      111
+query to get employees who are working in d1 dept.
+query to get sum of employees salary who are working in d1 dept.
+17. diff bet clustered and non clustered index.
+18. if i create temp table, which index will get created with it by default. also if i specify explicit columns for creating index, which type of index it will create.

@@ -1,0 +1,41 @@
+ACI Interview:
+
+Technical round face 2 face: 2 interviewers
+
+1. tell me about your career profile
+2. do you know OOPs
+3. Imagine you are not software developer and common person like any govt employee. How would you relate OOPs with real world example. 
+Give one use case with real world example where we can achieve Abstraction, Inheritance, polymorphism, genaralization, Specialization etc.
+4. Write down diagram of your current project
+5. Questions on each component of above diagram drawn..for ex.. why this module is separate, how it is load balanced, in memory process or saving in DB for processing, how user interacts with system, how security implemented in module etc.
+6. difference between SOAP vs Rest. which you will prefer
+7. when any request comes, how it gets handled. via one thread or multi thread?
+8. where you have used threadpool in your project
+9. Draw collection classes and their hierarchy on paper. and explain use cases where it is used in your project
+10. why spring made singleton as default scope for bean
+11. Write down program to find out all combination for String "GOD"
+12. how to find complexity of above program
+13. have you used SQL queries. what are native queries. How application work with queries in DB.
+14. what are technical challenges you have faced in your project
+15. suppose, millions of user send request to your application, how will you handle it without any issue.
+16. Where you have used immutable class and what is importance of it.
+17. Do have any question to ask?
+
+Interviewers were very cool. One lady and one gent. every question asked very politely. 
+
+
+MANAGER ROUND: 
+
+1. how was your day?
+2. tell me about your family , education and career profile
+3. Then explained how company works, how people working on product, how company has spent lot of efforts for creating product which is used in all banking system. Also, what are the future plans. he explained near about 20-25 minutes.
+4. Tell me which challenges you faced in your career?
+5. Are you goto person. how you manage if there is need to help other employees.
+6.  tell me your weak points where you want improvement
+7. you have switched many organisations, what is your stability?
+8. what are the reason that you will feel that you will leave the organisation
+9. if you are selected, how soon you can join
+10. Do you have any question. 
+
+manager was very cool and he came with me till reception after interview. generally no manager do it.
+

@@ -1,0 +1,640 @@
+How to Configure Versioning on a Bucket
+
+Versioning helps you to keep multiple versions of an object in one bucket. Here are simple steps to enable versioning on an S3 bucket. 
+	Step1: Login to your AWS console. 
+	Step2: From services choose S3. 
+	Step3: Select a bucket for which you want to enable versioning. 
+	Step4: Click on the properties tab. 
+	Step5: Choose versioning from properties. 
+	Step6: Choose to enable versioning and click on the Ok button.
+
+************************************************************
+What is AWS Fargate, and what all it can manage? Why would one use AWS Fargate?
+
+AWS Fargate is a serverless compute engine for containers that works with both Amazon Elastic Container Service (ECS) and Amazon Elastic Kubernetes Service (EKS). Fargate makes it easy for you to focus on building your applications. Fargate removes the need to provision and manage servers, lets you specify and pay for resources per application, and improves security through application isolation by design.
+
+Fargate allocates the right amount of compute, eliminating the need to choose instances and scale cluster capacity. You only pay for the resources required to run your containers, so there is no over-provisioning and paying for additional servers. Fargate runs each task or pod in its own kernel providing the tasks and pods their own isolated compute environment. This enables your application to have workload isolation and improved security by design.
+************************************************************
+What is Spring WebFlux?
+The WebFlux framework in Spring Framework 5 uses Reactor as its async foundation.
+
+This project provides two core types: Mono to represent a single async value, and Flux to represent a stream of async values. They both implement the Publisher interface defined in the Reactive Streams specification.
+
+Mono implements Publisher and returns 0 or 1 elements:
+
+1goo
+public abstract class Mono implements Publisher {...}
+Also, Flux implements Publisher and returns N elements:
+
+1
+public abstract class Flux implements Publisher {...}
+By definition, the two types represent streams, hence they’re both lazy, which means nothing is executed until we consume the stream using the subscribe() method. Both types are immutable, therefor
+
+************************************************************
+REST API: Dealing with response time SLA
+You are writing a micro service that has signed up for certain SLA of response time. Let's say, you must respond within 1 second of receiving the request. However, your micro service depends on 3 external micro services with 500 ms SLA each.
+
+How would you ensure that you meet your SLA most of the times?
+
+REST API Caching is the primary solution to meet the response time SLA requirements. You should cache the response from the other micro services; with proper mechanism to deal with staleness of the cache.
+************************************************************
+Describe different scenarios which helps to enhance Dzb performance in AWS?
+
+If candidate  talks about IOPS to identify usages and choosing  advance IOPS rather than general purpose.
+If candidate talks about primary and secondary database set up to switch over in case of disaster.
+If candidate talk about choosing Arora instead MySql rds to fulfill performance enhancement
+
+
+************************************************************
+
+How APIs are authenticated in Spring framework?
+
+We can do Security configurations entirely in a Java class by creating a config class that extends WebSecurityConfigurerAdapter and annotating it with @EnableWebSecurity.
+
+Alternatively, web.xml of the Application can be amended with security specific < filter > and the < filter-pattern > can specify the URL matching pattern for which the authentication is enabled.  Note that some APIs may NOT require authentication.
+
+==================================================================
+Tell me few best practices you apply while using Collections in Java?
+
+
+Here are couple of best practices we should follow while using Collection classes from Java:
+a) Always use the right collection e.g. if you need non-synchronized list then use ArrayList and not Vector.
+b) Prefer concurrent collection over synchronized collection because they are more scalable.
+c) Always use interface to a represent and access a collection e.g. use List to store ArrayList, Map to store HashMap and so on.
+d) Use iterator to loop over collection.
+e) Always use generics with collection.
+f)Prefer isEmpty() over size().
+g)Do not return null in a method that returns a collection.
+h)Overriding equals() and hashCode() properly.
+i)Using the Stream API on collections.
+j)Using bounded wildcards to increase API flexibility.
+k)Using third-party collections libraries like Fastutil, Guava, Eclipse Collections and JCTools.
+============================
+What Is a Stream? How Does It Differ from a Collection?
+
+In simple terms, a stream is an iterator whose role is to accept a set of actions to apply on each of the elements it contains.
+
+The stream represents a sequence of objects from a source such as a collection, which supports aggregate operations. They were designed to make collection processing simple and concise. Contrary to the collections, the logic of iteration is implemented inside the stream, 
+so we can use methods like map and flatMap for performing a declarative processing.
+Another difference is that the Stream API is fluent and allows pipelining:
+
+int sum = Arrays.stream(new int[]{1, 2, 3})
+  .filter(i -> i >= 2)
+  .map(i -> i * 3)
+  .sum();
+And yet another important distinction from collections is that streams are inherently lazily loaded and processed.
+============================
+Design a Real time document editor like google docs
+
+============================
+What are the differences between Predicate, Consumer, Supplier, Function and Bi-Function. Please provide the examples
+
+Candidate should answer Predicate is used to return true or false, Function is used to take arguments and return something, Supplier doesnt take argument and return something, Consumer takes argument but doesn't return anything.
+
+========================================
+How to handle exceptions in Spring MVC Framework? please explain in detail. Provide examples, if possible.
+
+Spring MVC Framework provides the following ways to help us achieving robust exception handling.
+
+Controller Based – We can define exception handler methods in our controller classes. All we need is to annotate these methods with 
+@ExceptionHandler annotation.
+Global Exception Handler – Exception Handling is a cross-cutting concern and Spring provides @ControllerAdvice annotation that we can use with any class to define our global exception handler.
+HandlerExceptionResolver implementation – For generic exceptions, most of the times we serve static pages. Spring Framework provides HandlerExceptionResolver interface that we can implement to create global exception handler. The reason behind this additional way to define global exception handler is that Spring framework also provides default implementation classes that we can define in our spring bean configuration file to get spring framework exception handling benefits.
+
+
+=============================
+
+##################################################
+Coding Question: Kaprekar's Constant: Magic number 6174
+https://www.geeksforgeeks.org/kaprekar-constant/
+
+################################################
+Tell me about different Reference types available in Java, e.g. WeakReference, SoftReference, or PhantomReference? and Why should you use them?
+
+Well, they are different reference types coming from java.lang.ref package and provided to assist Java Garbage Collector in a case of low memory issues. If you wrap an object with WeakReference then it will be eligible for garbage collected if there are o strong references. They can later be reclaimed by the Garbage collector if JVM is running low on memory. The java.util.WeakHashMap is a special Map implementation, whose keys are the object of WeakReference, so if only Map contains the reference of any object and no other, those objects can be garbage collected if GC needs memory.
+
+##############################
+
+What is thread starvation?
+
+Thread starvation is basically a situation or condition where a thread won’t be able to have regular access to shared resources and therefore is unable to proceed or make progress. This is because other threads have high priority and occupy the resources for too long. This usually happens with low-priority threads that do not get CPU for its execution to carry o
+
+##############################
+How you would aggregate logs in distributed micro service architecture?
+
+##############################
+
+One Hundred Doors : What state are the doors in after the last pass? Which are open, which are closed?
+One Hundred Doors Problem: You have 100 doors in a row that are all initially closed. You make 100 passes by the doors. The first time through, you visit every door and toggle the door (if the door is closed, you open it; if it is open, you close it). The second time you only visit every 2nd door (door #2, #4, #6, ...). The third time, every 3rd door (door #3, #6, #9, ...), etc, until you only visit the 100th door.
+
+Question: What state are the doors in after the last pass? Which are open, which are closed?
+
+##############################
+
+
+How To Serialize HashMap In Java ...
+How To Serialize HashMap In Java The important point to note is that HashMap class is serialized by default.It means HashMap class does not need to implement Serializable interface in order to make it eligible for Serialization.
+
+Serialization of HashMap :
+
+In the below example we are storing the HashMap content in a hashmap.ser serialized file. Once you run the below code it would produce a hashmap.ser file.The hashmap.ser file is then used in the de-serialization of HashMap.
+
+import java.util.*; import java.io.*; public class HashMapSerializeExample { public static void main(String args[]) { // Creating a HashMap of Integer keys and String values HashMap hashmap = new HashMap(); hashmap.put(1, "Value1"); hashmap.put(2, "Value2"); hashmap.put(3, "Value3"); hashmap.put(4, "Value4"); hashmap.put(5, "Value5"); try { FileOutputStream fos = new FileOutputStream("hashmap.ser"); ObjectOutputStream oos = new ObjectOutputStream(fos); oos.writeObject(hmap); oos.close(); fos.close(); System.out.printf("Serialized HashMap data is saved in hashmap.ser"); }catch(IOException ioe) { ioe.printStackTrace(); } } } Output Serialized HashMap data is saved in hashmap.ser
+
+##############################
+What is meant by an "asynchronous event." Give some examples ?
+
+Ans. An asynchronous event is one that occurs at an unpredictable time outside the control of the program that the CPU is running. It is not "synchronized" with the program.
+
+##############################
+
+What is method reference and where can it be used, what are the limitations of method reference.
+
+Method reference is used to refer method of functional interface. It is compact and easy form of lambda expression
+
+##############################
+
+What are the differences between Predicate, Consumer, Supplier, Function and Bi-Function. Please provide the examples
+Candidate should answer Predicate is used to return true or false, Function is used to take arguments and return something, Supplier does not take argument and return something, Consumer takes argument but doesn't return anything.
+
+##############################
+Q Find Kth smallest element in a two dimensional matrix
+
+Input: Two dimensional array of integers and integer k Output: kth smallest number (integer)
+Ans: Key here is to flatten a two dimensional matrix (array of array) into a single array and then sort it in ascending order.  Sample solution in Java:
+
+public int kthSmallest(int[][] matrix, int k) {
+    int row=matrix.length;
+    int col=matrix[0].length;
+    int arr[]=new int[row*col];
+    int t=0,q=0;
+    if(row*col
+##############################
+What are the different ways of creating ApplicationContext in a Java Program? Please explain in detail.
+
+
+
+There are following ways to create spring context in a standalone java program.
+
+AnnotationConfigApplicationContext: If we are using Spring in standalone java applications and using annotations for Configuration, then we can use this to initialize the container and get the bean objects.
+ClassPathXmlApplicationContext: If we have spring bean configuration xml file in standalone application, then we can use this class to load the file and get the container object.
+FileSystemXmlApplicationContext: This is similar to ClassPathXmlApplicationContext except that the xml configuration file can be loaded from anywhere in the file system.
+##############################
+What is method reference and where can it be used, what are the limitations of method reference.
+Method reference is used to refer method of functional interface. It is compact and easy form of lambda expression
+##############################
+Coding Question: Kaprekar's Constant: Magic number 6174
+Indian mathematician D.R. Kaprekar observed a very interesting property of number 6174.
+
+If you take any four digit number (let's say 3281) and arrange its digits in descending order (8321) and ascending order (1238) and then subtract the smaller number from the larger number -- and if you repeat that process, you will reach number 6174.
+
+3281: 8321 - 1238 = 7083 8730 - 0378 = 8352 8532 - 2358 = 6174
+
+Number 6174 - when you do this process, will result into 6174 itself.
+##############################
+How APIs are authenticated in Spring framework?
+
+We can do Security configurations entirely in a Java class by creating a config class that extends WebSecurityConfigurerAdapter and annotating it with @EnableWebSecurity.
+
+Alternatively, web.xml of the Application can be amended with security specific < filter > and the < filter-pattern > can specify the URL matching pattern for which the authentication is enabled.  Note that some APIs may NOT require authentication.
+
+##############################
+What is the stateful intermediate operation? Give some examples of stateful intermediate operations.
+To complete some of the intermediate operations, some state is to be maintained, and such intermediate operations are called stateful intermediate operations. Parallel execution of these types of operations is complex. For Eg: sorted() , distinct() , limit() , skip() etc. Sending data elements to further steps in the pipeline stops till all the data is sorted for sorted() and stream data elements are stored in temporary data structures
+
+##############################
+What is the feature of the new Date and Time API in Java 8?
+
+Immutable classes and Thread-safe Timezone support Fluent methods for object creation and arithmetic Addresses I18N issue for earlier APIs Influenced by popular joda-time package All packages are based on the ISO-8601 calendar system
+##############################
+Write sample code to demonstrate optional binding and optional chaining
+##############################
+Which of the following can be used for Dependency managment in spring boot?
+
+##############################
+What is the difference between AWS Latency Based Routing and Geo DNS?
+
+The Geo Based DNS routing takes decisions based on the geographic location of the request. Whereas, the Latency Based Routing utilizes latency measurements between networks and AWS data centers. Latency Based Routing is used when you want to give your customers the lowest latency possible. On the other hand, Geo Based routing is used when you want to direct the customer to different websites based on the country or region they are browsing from.
+##############################
+What is CyclicBarrier and CountDownLatch?
+
+
+
+CyclicBarrier and CountDownLatch, both are required for managing multithreaded programming. But there is some difference between them as given below: CyclicBarrier and CountDownLatch, both are required for managing multithreaded programming. But there is some difference between them as given below: CyclicBarrier: It is a tool to synchronize threads processing using some algorithm. It enables a set of threads to wait for each other till they reach a common execution point or common barrier points, and then let them further continue execution. One can reuse the same CyclicBarrier even if the barrier is broken by setting it. CountDownLatch: It is a tool that enables main threads to wait until mandatory operations are performed and completed by other threads. In simple words, it makes sure that a thread waits until the execution in another thread completes before it starts its execution. One cannot reuse the same CountDownLatch once the count reaches 0.
+
+##############################
+
+Breadth First Search or BFS for a Graph
+ Java program to print BFS traversal from a given source vertex. // BFS(int s) traverses vertices reachable from s. import java.io.*; import java.util.*; // This class represents a directed graph using adjacency list // representation class Graph { private int V; // No. of vertices private LinkedList adj[]; //Adjacency Lists // Constructor Graph(int v) { V = v; adj = new LinkedList[v]; for (int i=0; i queue = new LinkedList(); // Mark the current node as visited and enqueue it visited[s]=true; queue.add(s); while (queue.size() != 0) { // Dequeue a vertex from queue and print it s = queue.poll(); System.out.print(s+" "); // Get all adjacent vertices of the dequeued vertex s // If a adjacent has not been visited, then mark it // visited and enqueue it Iterator i = adj[s].listIterator(); while (i.hasNext()) { int n = i.next(); if (!visited[n]) { visited[n] = true; queue.add(n); } } } } // Driver method to public static void main(String args[]) { Graph g = new Graph(4); g.addEdge(0, 1); g.addEdge(0, 2); g.addEdge(1, 2); g.addEdge(2, 0); g.addEdge(2, 3); g.addEdge(3, 3); System.out.println("Following is Breadth First Traversal "+ "(starting from vertex 2)"); g.BFS(2); } }
+
+
+##############################
+What do you understand by JRXML?
+
+##############################
+What are different ways to manage transactions in microservices architecture?
+
+Over a period of time Microservices community deviced different ways of handling transactions across Microservices. Some of the approaches address transaction management at the design level and others at design and coding level.
+
+##############################
+What should be a desirable timeout for an API between 2 systems?
+##############################
+
+What are handshaking API parameters at the integration point between 2 systems?
+##############################
+
+How can you achieve thread-safety in beans?
+The thread safety can be achieved by changing the scope of the bean to request, session or prototype but at the cost of performance. This is purely based on the project requirements.
+
+##############################
+Why do we need BindingResults?
+BindingResults is an important Spring interface that is within the org.Springframework.validation package. This interface has a very simple and easy process of invocation and plays a vital role in detecting errors in the submitted forms. However, care has to be taken by the developer to use the BindingResult parameter just after the object that needs validation. For example: @PostMapping("/interviewbit") public String registerCourse(@Valid RegisterUser registerUser, BindingResult bindingResult, Model model) { if (bindingResult.hasErrors()) { return "home"; } model.addAttribute("message", "Valid inputs"); return "home"; } The Spring will understand to find the corresponding validators by checking the @Valid annotation on the parameter
+##############################
+What inheritance mapping strategies are available in Hibernate?
+
+1 Table per hierarchy
+2 Table per concrete class
+3 Table per subclass
+
+##############################
+Write a recursive function to calculate the height of a binary tree in Java.
+
+Consider that every node of a tree represents a class called Node as given below: 
+
+	public class Node {
+		int data;
+		Node left;
+		Node right;
+	}
+	//Then the height of the binary tree canbe found as follows:
+
+	int heightOfBinaryTree(Node node) { 
+		if (node == null) return 0; 
+	//If node is null then height is 0 for that node. 
+	else { // compute the height of each subtree 
+		int leftHeight = heightOfBinaryTree(node.left); 
+		int rightHeight = heightOfBinaryTree(node.right); //use the larger among the left and right height and plus 1 (for the root) 
+
+		return Math.max(leftHeight, rightHeight) + 1; } }
+	}
+##############################
+What is Token filters in Elasticsearch Analyzer?
+A token filter receives the token stream and may add, remove, or change tokens. For example, a lowercase token filter converts all tokens to lowercase, a stop token filter removes common words (stop words) like the from the token stream, and a synonym token filter introduces synonyms into the token stream. Token filters are not allowed to change the position or character offsets of each token. An analyzer may have zero or more token filters, which are applied in order.
+##############################
+Explain Services as Docker containers in ECE
+
+
+Services are deployed as Docker containers, which simplifies the operational effort and makes it easy to provision similar environments for development and staging. Using Docker containers has the following advantages: Shares of resources Each cluster node is run within a Docker container to make sure that all of the nodes have access to a guaranteed share of host resources. This mitigates the noisy neighbor effect where one busy deployment can overwhelm the entire host. The CPU resources are relative to the size of the Elasticsearch cluster they get assigned to. For example, a cluster with 32GB of RAM gets assigned twice as many CPU resources as a cluster with 16GB of RAM. Better security On the assumption that any cluster can be compromised, containers are given no access to the platform. The same is true for the services: each service can read or write only those parts of the system state that are relevant to it. Even if some services are compromised, the attacker won’t get hold of the keys to the rest of them and will not compromise the whole platform. Secure communication through Stunnel Docker containers communicate securely with one another through Transport Layer Security, provided by Stunnel (as not all of the services or components support TLS natively). Tunneling all traffic between containers makes sure that it is not possible to eavesdrop, even when someone else has access to the underlying cloud or network infrastructure.
+
+
+##############################
+What differences exist between Iterator and List Iterator ?
+
+The differences of these elements are listed below:
+• An Iterator can be used to traverse the Set and List collections, while
+the ListIterator can be used to iterate only over List .
+• The Iterator can traverse a collection only in forward direction, while
+the ListIterator can traverse a List in both directions.
+• The ListIterator implements the Iterator interface and contains extra
+functionality, such as adding and replacing an element,
+getting the index position for previous and next elements, etc.
+##############################
+How APIs are authenticated in Spring framework?
+
+We can do Security configurations entirely in a Java class by creating a config class that extends WebSecurityConfigurerAdapter and annotating it with @EnableWebSecurity.
+
+Alternatively, web.xml of the Application can be amended with security specific < filter > and the < filter-pattern > can specify the URL matching pattern for which the authentication is enabled.  Note that some APIs may NOT require authentication.
+
+##############################
+How to find loop in a singly linked list?
+You have a singly linked list implemented from scratch. How will find a possible loop in the list?
+
+Imagine the list can have millions of elements!
+
+Having two pointers, one traverses at twice the speed of the first one -- and if both pointers are ever same, you have a loop.  This can be easily done if you draw a picture and move one pointer to two nodes and one to only next node.
+
+If you reach NULL (end of the list) then you obviously know that there's no loop.
+
+##############################
+What do you understand by Distributed Transaction?
+
+Distributed Transaction is any situation where a single event results in the mutation of two or more separate sources of data which cannot be committed automically. In the world of microservices, it becomes even more complex as each service is a unit of work and most of the time multiple services have to work together to make a business successful.
+
+For example: Checking out an online shopping cart.  It would involve potentially a third party payment gateway service, inventory service, and more.
+
+##############################
+What is Turbine server and why would you use it? (Microservices)
+
+Turbine is part of the Monitoring Server in a typical Microservices Architecture.
+There are multiple components to monitoring server. Hystrix, Turbine and Hystrix-Dashboard.
+
+In order to build MONITORING-SERVER-API we have to import the dependency spring-cloud-starter-hystrix, spring-cloud-starter-hystrix-dashboard and spring-cloud-starter-turbine in pom.xml and enable it in application main class using @EnableTurbine and @EnableHystrixDashboard annotation.
+##############################
+what is stalelessness in restful webservice
+##############################
+How would you deal with staleness of REST API cache?
+Let's assume you have implemented caching of REST API in your client or web service (which depends on other webservices).
+
+How would you ensure that the cached responses of the REST API is not stale?
+
+Depending on the rate at which you expect the information to change, you can have different mechanism.  You have to keep additional metadata about the API response to implement caching + avoiding stale data.  Meta data that you require would be:  (a) when did you last receive the data, (b) was there an "Expires" header in the response, (c) history or rate of change of data etc.
+
+After that, you can implement on or more of following:
+
+1. Issue "GET + If-modified-since" (GIMS) request instead of simple GET request.
+2. When your server receives down stream REST API, respond from the cache; but immediately after that, asynchronously refresh your cache from upstream server(s).
+3. Issue GIMS request if you are at more than half the time between last refresh check and cache expiry.
+4. If your upstream service has put too conservative Expiry header, then you can add additional logic to issue GIMS even after cache expiry using rate of change of data algorithm.  Let's say, t0 is when you received original data.  Expiry header says response will expire in 5 days.  So, on 6th day, you issue GIMS.  If it's still not expired, you assume effective expiry date = t0 + 5 days + 2 * (now - expiry as per Expires: header).  So, you won't check for 2 more days.  On 8th day, you again check issue GIMS.  If server ever returns 200 ok response, t0 resets.
+##############################
+What Is a Default Method and When Do We Use It?
+A default method is a method with an implementation – which can be found in an interface.
+We can use a default method to add a new functionality to an interface while maintaining backward compatibility with classes that are already implementing the interface:
+##############################
+How duplicate form submission can be controlled in Struts?
+
+saveToken() method of action class generates a unique token and saves it in the user’s session. isTokenValid() method is used then used to check uniqueness of tokens.
+
+##############################
+How do you prevent SQL Injection in Java Code?
+You can use PreparedStatement to avoid SQL injection in Java code. Use of the PreparedStatement for executing SQL queries not only provides better performance but also shield your Java and J2EE application from SQL Injection attack. On a similar note, If you are working more on Java EE or J2EE side, then you should also be familiar with other security issues including Session Fixation attacks or Cross-Site Scripting attacks and how to resolve them.
+##############################
+What is the difference between the RANK() and DENSE_RANK() functions? Provide an example.
+
+##############################
+What Is a Stream? How Does It Differ from a Collection?
+
+In simple terms, a stream is an iterator whose role is to accept a set of actions to apply on each of the elements it contains.
+
+The stream represents a sequence of objects from a source such as a collection, which supports aggregate operations. They were designed to make collection processing simple and concise. Contrary to the collections, the logic of iteration is implemented inside the stream, so we can use methods like map and flatMap for performing a declarative processing.
+
+Another difference is that the Stream API is fluent and allows pipelining:
+
+int sum = Arrays.stream(new int[]{1, 2, 3})
+  .filter(i -> i >= 2)
+  .map(i -> i * 3)
+  .sum();
+And yet another important distinction from collections is that streams are inherently lazily loaded and processed.
+
+##############################
+What does @EnableAutoConfiguration do? What about @SpringBootApplication?
+
+Many Spring Boot developers like their apps to use auto-configuration, component scan and be able to define extra configuration on their "application class". A single @SpringBootApplication annotation can be used to enable those three features, that is:
+
+@EnableAutoConfiguration: enable Spring Boot’s auto-configuration mechanism
+@ComponentScan: enable @Component scan on the package where the application is located (see the best practices)
+@Configuration: allow to register extra beans in the context or import additional configuration classes
+
+Spring Boot auto-configuration attempts to automatically configure your Spring application based on the jar dependencies that you have added. For example, if HSQLDB is on your classpath, and you have not manually configured any database connection beans, then Spring Boot auto-configures an in-memory database.
+
+You need to opt-in to auto-configuration by adding the @EnableAutoConfiguration or @SpringBootApplication annotations to one of your @Configuration classes.
+
+##############################
+What Is the Difference Between Map and flatMap Stream Operation?
+
+There is a difference in signature between map and flatMap. Generally speaking, a map operation wraps its return value inside its ordinal type while flatMap does not.
+
+For example, in Optional, a map operation would return Optional type while flatMap would return String type.
+
+So after mapping, one needs to unwrap (read “flatten”) the object to retrieve the value whereas, after flat mapping, there is no such need as the object is already flattened. The same concept is applied to mapping and flat mapping in Stream.
+
+Both map and flatMap are intermediate stream operations that receive a function and apply this function to all elements of a stream.
+
+The difference is that for the map, this function returns a value, but for flatMap, this function returns a stream. The flatMap operation “flattens” the streams into one.
+
+Here's an example where we take a map of users' names and lists of phones and “flatten” it down to a list of phones of all the users using flatMap:
+
+Map> people = new HashMap<>();
+people.put("John", Arrays.asList("555-1123", "555-3389"));
+people.put("Mary", Arrays.asList("555-2243", "555-5264"));
+people.put("Steve", Arrays.asList("555-6654", "555-3242"));
+ 
+List phones = people.values().stream()
+  .flatMap(Collection::stream)
+    .collect(Collectors.toList());
+##############################
+What is API gateway?
+API Gateway is a special class of microservices that meets the need of a single client application (such as android app, web app, angular JS app, iPhone app, etc) and provide it with single entry point to the backend resources (microservices), providing cross-cutting concerns to them such as security, monitoring/metrics & resiliency.
+
+Client Application can access tens or hundreds of microservices concurrently with each request, aggregating the response and transforming them to meet the client application’s needs. Api Gateway can use a client-side load balancer library (Ribbon) to distribute load across instances based on round-robin fashion. It can also do protocol translation i.e. HTTP to AMQP if necessary. It can handle security for protected resources as well.
+
+Features of API Gateway
+
+Spring Cloud DiscoveryClient integration Request Rate Limiting (available in Spring Boot 2.x) Path Rewriting Hystrix Circuit Breaker integration for resiliency
+##############################
+How to find loop in a singly linked list?
+You have a singly linked list implemented from scratch. How will find a possible loop in the list?
+
+Imagine the list can have millions of elements!
+
+Having two pointers, one traverses at twice the speed of the first one -- and if both pointers are ever same, you have a loop.  This can be easily done if you draw a picture and move one pointer to two nodes and one to only next node.
+##############################
+What is major and minor garbage collection in java?
+##############################
+How do you tell spring boot application that responsetype should be both xml and json?
+##############################
+How you will get to know how much time took to complete one request in spring boot.
+execution isolation time, .ml file 
+##############################
+Describe Some of the Functional Interfaces in the Standard Library.
+There are a lot of functional interfaces in the java.util.function package, the more common ones include but not limited to:
+
+Function – it takes one argument and returns a result
+Consumer – it takes one argument and returns no result (represents a side effect)
+Supplier – it takes no argument and returns a result
+Predicate – it takes one argument and returns a boolean
+BiFunction – it takes two arguments and returns a result
+BinaryOperator – it is similar to a BiFunction, taking two arguments and returning a result. The two arguments and the result are all of the same types
+UnaryOperator – it is similar to a Function, taking a single argument and returning a result of the same type
+##############################
+What are Reactive Extensions in Microservices?
+
+Reactive Extensions also are known as Rx. It is a design approach in which we collect results by calling multiple services and then compile a combined response. These calls can be synchronous or asynchronous, blocking or non-blocking. Rx is a very popular tool in distributed systems which works opposite to legacy flows.
+##############################
+What Is Stream Pipelining in Java 8?
+
+Stream pipelining is the concept of chaining operations together. This is done by splitting the operations that can happen on a stream into two categories: intermediate operations and terminal operations.
+
+Each intermediate operation returns an instance of Stream itself when it runs, an arbitrary number of intermediate operations can, therefore, be set up to process data forming a processing pipeline.
+
+There must then be a terminal operation which returns a final value and terminates the pipeline.
+
+##############################
+Give a scenario where hotspot will optimize your code?
+
+If we have defined a variable as static and then initialized this variable in a static block then the Hotspot will merge the variable and the initialization in a single statement and hence reduce the code.
+##############################
+Difference between @Qualifier and @Prmary annotations
+Two bean of the same type, out of bean , we used @ qualify to speify bean name
+@Primary : 
+##############################
+What is the best way to expose custom application configuration with Spring Boot?
+
+One way to expose the custom application configuration in Spring Boot is by using the @Value annotation. But, the only problem with this annotation is that all the configuration values will be distributed throughout the application. Instead, you can use a centralized approach. By centralized approach, I mean that you can define a configuration component using the @ConfigurationProperties as follows: 1 2 3 4 5 6 @Component @ConfigurationProperties("example") public class SampleConfiguration { private int number; private boolean value; private String message; According to the above snippet, the values configured in application.properties will be as follows: 1 2 3 example.number: 100 example.value: true example.message: Dynamic Message
+
+##############################
+what’s AWS AMI and how to build an AMI?
+An Amazon Machine Image (AMI) is a supported and maintained image provided by AWS that provides the information required to launch an instance. You must specify an AMI when you launch an instance. You can launch multiple instances from a single AMI when you require multiple instances with the same configuration.
+##############################
+
+What Is Identity Access Management (IAM) and How is It Used?
+
+	What is SQS? What are the pros & cons of it
+		one lamda to another, once packet get process it will take another packet
+	How will you do horizontal scaling in AWS? what are the different scaling policies ? which one did you used in your production environment?
+		EC2 instance particular range, exact copy of same instances
+	What are the advantages of AWS API gateway?
+		
+	what is the use of S3 service? when did you used in your project?
+		store large amount  of data in our project ,like multi media type used s3 bucket
+
+##############################
+What Is Amazon Virtual Private Cloud (VPC) and Why Is It Used?
+	What Is Amazon Virtual Private Cloud (VPC) and Why Is It Used? What Is Cloudtrail and How Do Cloudtrail and Route 53 Work Together? When Would You Prefer Provisioned IOPS over Standard Rds Storage?
+	Route 53: we have deployed project X  place, several  region , main feature , deployed data in aws , try to make available in different
+		instances, makes faster to the response.
+##############################
+How Would You Perform Security Testing of Microservices?
+
+##############################
+SprintBoot: URL mapping to class
+In SpringBoot, how would a URL or URL patterns of the web application (RESTful API) be mapped to a SpringBoot class?
+
+##############################
+Explain the Syntax and Characteristics of a Lambda Expression
+
+A lambda expression consists of two parts: 	nd the expressions part separated by a forward arrow as below:
+
+params -> expressions
+Any lambda expression has the following characteristics:
+
+Optional type declaration – when declaring the parameters on the left-hand side of the lambda, we don't need to declare their types as the compiler can infer them from their values. So int param -> … and param ->… are all valid
+Optional parentheses – when only a single parameter is declared, we don't need to place it in parentheses. This means param -> … and (param) -> … are all valid. But when more than one parameter is declared, parentheses are required
+Optional curly braces – when the expressions part only has a single statement, there is no need for curly braces. This means that param – > statement and param – > {statement;} are all valid. But curly braces are required when there is more than one statement
+Optional return statement – when the expression returns a value and it is wrapped inside curly braces, then we don't need a return statement. That means (a, b) – > {return a+b;} and (a, b) – > {a+b;} are both valid
+##############################
+How you can set up a Jenkins job?
+
+	a. Go to the Jenkins Dashboard and log in with your registered login credentials.
+	b. Click on the New Item that is shown in the left panel of the page.
+	c. Click on the Freestyle Project from the given list on the upcoming page and specify the item name in the text box.
+	d. Add the URL to the Git Repository.
+	e. Go to the Build section and click on the Add build step => Execute Windows batch command.
+	f. Enter the command in the command window
+	g. After saving all the settings and changes click on Build Now.
+
+##############################
+What is immutability concept in java and Why String class is immutable in Java?
+Which one is better to use char array or String? What is immutability concept in java and Why String class is immutable in Java?
+
+String is immutable for several reasons:
+Security: parameters are typically represented as String in network connections, database connection urls, usernames/passwords etc. If it were mutable, these parameters could be easily changed.
+Synchronization and concurrency: making String immutable automatically makes them thread safe thereby solving the synchronization issues.
+Caching: when compiler optimizes your String objects, it sees that if two objects have same value (a="test", and b="test") and thus you need only one string object (for both a and b, these two will point to the same object).
+Class loading: String is used as arguments for class loading. If mutable, it could result in wrong class being loaded (because mutable objects change their state).
+
+##############################
+
+What is the difference between Authentication and Authorization. How you will implement in Spring Boot application
+##############################
+
+Describe Some of the Functional Interfaces in the Standard Library.
+
+There are a lot of functional interfaces in the java.util.function package, the more common ones include but not limited to:
+
+Function – it takes one argument and returns a result
+Consumer – it takes one argument and returns no result (represents a side effect)
+Supplier – it takes not argument and returns a result
+Predicate – it takes one argument and returns a boolean
+BiFunction – it takes two arguments and returns a result
+BinaryOperator – it is similar to a BiFunction, taking two arguments and returning a result. The two arguments and the result are all of the same types
+UnaryOperator – it is similar to a Function, taking a single argument and returning a result of the same type
+
+##############################
+How do you tell spring boot application that responsetype should be both xml and json
+
+
+##############################
+What is Actuator in Spring Boot?
+==========================
+
+Spring Boot Actuator includes a number of additional features to help you monitor and manage your application when it’s pushed to production. You can choose to manage and monitor your application using HTTP or JMX endpoints. Auditing, health and metrics gathering can be automatically applied to your application. The user guide covers the features in more detail.
+
+##############################
+What are some of the valid return types of a controller method?
+
+
+There are many return types are available for Handler method which is annotated by @RequestMapping inside the controller, like :
+
+ModelAndView (Class)
+Model (Interface)
+Map
+String
+void
+View
+HttpEntity< ?  >or ResponseEntity< ? >
+HttpHeaders
+
+##############################
+How do RESTFUL services work? Especially, from authentication perspective.
+
+
+Ideal Answer (5 star)
+Check candidate's overall understanding of how authenticated RESTFUL API works.  Candidate must be able to articulate following:
+
+1.  User is first authenticated; using any authentication process (username/password to client certificate to external auth server authentication (for example, LDAP) etc.
+
+2. Upon successful authentication, server will set cookie for the domain.
+
+3. All future requests will contain the cookie header with the secret value.
+
+4. In the backend framework - you will need to mark URLs for authentication.  For example, in case of Django, you will need to use decorator @login_required.  For Spring framework, you need to use the @EnableWebSecurity annotation etc.
+
+
+##################################
+What is orchestration and Choreography approach in micro services? Give one example.
+In Orchestration, we rely on a central system to control and call other Microservices in a certain fashion to complete a given task. The central system maintains the state of each step and sequence of the overall workflow.
+
+Let’s say we want to develop a microservice that will send product recommendation email in a fictitious e-shop. In order to send Recommendations, we need to have access to user’s order history which lies in a different microservices.
+
+In Orchestration approach, this new microservice for recommendations will make synchronous calls to order service and fetch the relevant data, then based on his past purchases we will calculate the recommendations. Doing this for a million users will become cumbersome and will tightly couple the two microservices.
+
+In Choreography approach, we will use event-based Asynchronous communication where whenever a user makes a purchase, an event will be published by order service. Recommendation service will listen to this event and start building user recommendation. This is a loosely coupled approach and highly scalable. The event, in this case, does not tell about the action, but just the data.
+
+#########################################
+what is ELK stack? how you would use in you project?
+The ELK Stack is made of three open-source products: 1) Elasticsearch, 2) Logstash, and 3) Kibana.
+
+Elasticsearch: It is a NoSQL database which is based on the open-source search engine called Lucene. 
+Logstash: It is a data processing pipeline tool which accepts inputs from sources, performs different transformations, and exports the data to targets. 
+Kibana: Kibana helps users to visualize data with graphs and chart in Elasticsearch.
+
+You can use combination of these for log aggregation.
+#########################################
+Why do you need the Eureka Server?
+To understand why the Eureka server is needed in microservice architecture, let's understand how one service calls another service REST endpoint for communication.
+
+Say we need to call the employee payroll service to get payroll information for an employee. The payroll service is deployed on the localhost 8080 port (we got that information by passing the employee primary key) so we just call the following:
+
+http://localhost:8080/payroll/1 or http://127.0.0.1/payroll/1
+
+Where localhost/127.0.0.1 is the hostname/IP address and payroll is the payroll service context, 1 is the employee primary key.
+
+But this is only possible when you know the hostname/IP addresses beforehand, then you can configure your URL. So here the hostname or IP address is a constraint or a pain point.
+
+If the IP address of a server/container is fixed, then you can use that approach, but what happens when your IP addresses and hostname are unpredictable?
+
+Nowadays, on a cloud platform, it is obvious that all the servers or containers use dynamic IPs for autoscaling. And the interesting thing is that in microservice architecture, the key principle is that your service can autoscaled as per load, so cloud platforms are ideal for microservices.
+
+What I am trying to say here is that we can not predict the IP addresses of the container/server beforehand, so putting dependent services IP addresses in the config file is not a solution. We need a more sophisticated technique to identify the service, and Eureka server steps in here.
+
+#########################################
+In the Producer, when does QueueFullException occur?
+
+whenever the Kafka Producer attempts to send messages at a pace that the Broker cannot handle at that time QueueFullException typically occurs. However, to collaboratively handle the increased load, users will need to add enough brokers, since the Producer doesn’t block.
+
+#########################################
+How to verify where the zookeeper stores information about Broker id and Offset numbers?
+Here is the command to check both metadata of offset and offsets. The offsets are stored in Zookeeper in the in _consumer_offsets topic. $ kafka-console-consumer.sh --consumer.config /tmp/consumer.config --formatter "GroupMetaDataManager\$offsetsMessageFormatter" --zookeeper : --topic _consumer_offsets The above command gives metadata of console consumer.
+#########################################
+#########################################
+#########################################
